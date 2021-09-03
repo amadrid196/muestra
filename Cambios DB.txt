@@ -1,0 +1,106 @@
+ALTER TABLE `ampc_sci`.`sci_departamento`
+RENAME TO  `ampc_sci`.`sci_estrutura_organizacion` ;
+
+ALTER TABLE `ampc_sci`.`sci_estado`
+ENGINE = InnoDB ;
+
+CREATE TABLE `ampc_sci`.`sci_tipo_estructura` (
+  `id_tipo_estructura` INT NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(80) NOT NULL,
+  `id_estado` INT NOT NULL,
+  PRIMARY KEY (`id_tipo_estructura`),
+  INDEX `fk_tipo_estructura_estado_idx` (`id_estado` ASC) ,
+  CONSTRAINT `fk_tipo_estructura_estado`
+    FOREIGN KEY (`id_estado`)
+    REFERENCES `ampc_sci`.`sci_estado` (`id_estado`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
+ALTER TABLE `ampc_sci`.`sci_tipo_estructura`
+DROP FOREIGN KEY `fk_tipo_estructura_estado`;
+ALTER TABLE `ampc_sci`.`sci_tipo_estructura`
+ENGINE = MyISAM ,
+DROP INDEX `fk_tipo_estructura_estado_idx` ;
+
+
+ALTER TABLE `ampc_sci`.`sci_estrutura_organizacion`
+ADD COLUMN `id_tipo_estructura` INT NOT NULL AFTER `id_estado`;
+
+
+ALTER TABLE `ampc_sci`.`sci_registro_documento`
+CHANGE COLUMN `fechaSolicitud` `fechaSolicitud` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `ampc_sci`.`sci_registro_documento`
+CHANGE COLUMN `idi_registro_documento` `id_registro_documento` INT(11) NOT NULL AUTO_INCREMENT ;
+
+
+
+ALTER TABLE `ampc_sci`.`sci_estrutura_organizacion`
+ADD COLUMN `id_dependencia` INT NOT NULL AFTER `id_tipo_estructura`;
+
+CREATE TABLE `ampc_sci`.`sci_dependencia` (
+  `id_dependencia` INT NOT NULL AUTO_INCREMENT,
+  `id_departamento` INT NOT NULL,
+  PRIMARY KEY (`id_dependencia`));
+
+
+ALTER TABLE `ampc_sci`.`sci_usuarios`
+ADD COLUMN `contraseña` VARCHAR(200) NOT NULL AFTER `correo`;
+
+
+CREATE TABLE `ampc_sci`.`sci_estado_registro_documento` (
+  `id_estado_registro_documento` INT NOT NULL AUTO_INCREMENT,
+  `descripcion` VARCHAR(80) NOT NULL,
+  `status` INT NOT NULL,
+  PRIMARY KEY (`id_estado_registro_documento`))
+ENGINE = MyISAM
+DEFAULT CHARACTER SET = utf8;
+
+ALTER TABLE `ampc_sci`.`sci_registro_documento`
+CHANGE COLUMN `id_estado` `id_estado_registro` INT(11) NOT NULL ;
+
+ALTER TABLE `ampc_sci`.`sci_documentos`
+ADD COLUMN `autorizacion` INT NOT NULL AFTER `tipos`;
+
+UPDATE `ampc_sci`.`sci_rol` SET `descripcion` = 'Administrador' WHERE (`id_rol` = '1');
+INSERT INTO `ampc_sci`.`sci_rol` (`descripcion`, `id_estado`) VALUES ('Alcadia', '1');
+
+ALTER TABLE `ampc_sci`.`sci_documentos` 
+ENGINE = MyISAM ;
+
+ALTER TABLE `ampc_sci`.`sci_dependencia` 
+ENGINE = MyISAM ;
+
+ALTER TABLE `ampc_sci`.`sci_estado` 
+ENGINE = MyISAM ;
+
+ALTER TABLE `ampc_sci`.`sci_registro_documento` 
+CHANGE COLUMN `adjunto` `adjunto` VARCHAR(200) NULL ;
+
+ALTER TABLE `ampc_sci`.`sci_logs` 
+CHANGE COLUMN `fecha` `fecha` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+ALTER TABLE `ampc_sci`.`sci_evaluacion` 
+CHANGE COLUMN `fecha_evaluacion` `fecha_evaluacion` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP ;
+
+
+
+MAIL_MAILER=smtp
+MAIL_HOST=https://mail.ampuertocortes.hn:2080
+MAIL_PORT=465
+MAIL_USERNAME=noreply@ampuertocortes.hn
+MAIL_PASSWORD=replay123*#
+MAIL_ENCRYPTION=ssl
+MAIL_FROM_ADDRESS=noreply@ampuertocortes.hn
+MAIL_FROM_NAME="${APP_NAME}"
+
+
+MAIL_MAILER=smtp
+MAIL_HOST=smtp.gmail.com
+MAIL_PORT=587
+MAIL_USERNAME=amadrid196@gmail.com
+MAIL_PASSWORD=ibcqcvuqfszrwhvk
+MAIL_ENCRYPTION=tls
+MAIL_FROM_ADDRESS=desarrollotecnologico@ampuertocortes.hn
+MAIL_FROM_NAME="Municipalidad de Cortés"
+

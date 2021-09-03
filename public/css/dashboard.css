@@ -1,0 +1,238 @@
+/*
+ * Base structure
+ */
+
+/* Move down content because we have a fixed navbar that is 50px tall */
+body {
+    padding-top: 50px;
+}
+
+/*
+ * Typography
+ */
+
+h1 {
+    margin-bottom: 20px;
+    padding-bottom: 9px;
+    border-bottom: 1px solid #eee;
+}
+
+/*
+ * Sidebar
+ */
+
+/* clases ampc_sci */
+.btn-primary {
+    color: #fff;
+    background-color: #64aa64 !important;
+    border-color: #64aa64 !important;
+}
+
+.text-verde {
+    color: #64aa64 !important;
+}
+
+a {
+    color: #64aa64 !important;
+    text-decoration: underline;
+}
+
+/* end clases ampc_sci */
+
+.sidebar {
+    position: fixed;
+    top: 51px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    border-right: 1px solid #eee;
+}
+
+/* Sidebar navigation */
+.sidebar {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.sidebar .nav {
+    margin-bottom: 20px;
+}
+
+.sidebar .nav-item {
+    width: 100%;
+}
+
+.sidebar .nav-item + .nav-item {
+    margin-left: 0;
+}
+
+.sidebar .nav-link {
+    border-radius: 0;
+}
+
+/*
+ * Dashboard
+ */
+
+/* Placeholders */
+.placeholders {
+    padding-bottom: 3rem;
+}
+
+.placeholder img {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.fondo_azul {
+    background: #325032;
+}
+ul.c-icon svg {
+    color: #ffa700 !important;
+    font-size: 14px;
+    margin: 0 10px 0 10px;
+}
+ul.tab_activo li {
+    color: white !important;
+    background: rgba(6, 26, 71, 0.5);
+    border-left: 3px solid #ffa700 !important;
+    border-radius: 0 20px 20px 0;
+}
+
+.tab_item:hover {
+    /* background: rgb(155, 153, 153); */
+    /* border-left: 2px solid #64aa64; */
+    color: #64aa64 !important;
+    cursor: pointer;
+    background: rgba(144, 144, 144, 0.1) !important;
+}
+
+ul.magen li {
+    margin: 0 0 2px 0;
+    font-size: 14px;
+}
+
+.avatar {
+    height: 35px;
+}
+
+.divNav {
+    margin: 13px 10px 6px 20px;
+    display: block;
+    font-size: 12px;
+    color: rgb(255, 255, 255) !important;
+}
+
+.cardHome:hover {
+    box-shadow: 0px 0px 25px 0px #a09b9b;
+    /* box-shadow: 0 10px 120px 0 rgba(0,0,0,.1); */
+    transition: 0.3s;
+    transform: translate(0px, -3px);
+    cursor: pointer;
+}
+.cardHome {
+    border-left: 3px solid #64aa64;
+    height: 130px;
+    overflow: hidden;
+    border-radius: 10px 5px 30px;
+    /* box-shadow: 0 10px 120px 0 rgba(0,0,0,.1); */
+}
+.cardHome h5 {
+    text-align: left;
+    font-size: 20px;
+    padding: 0;
+}
+.iconHome {
+    color: rgb(24, 59, 103);
+    font-size: 3.5rem;
+    margin: 0;
+}
+.textProceso span {
+    font-size: 18px;
+    font-weight: 400;
+    transition: 2s;
+    /* animation: Proceso 2s infinite; */
+}
+.contenedor {
+    flex: 1;
+    align-items: stretch;
+    display: flex;
+}
+
+.contenedor .contenido {
+    flex: 0 0 80%; /* width: 100%; */
+}
+
+.c-circle {
+    position: absolute;
+    top: -30px;
+    width: 50px;
+    height: 50px;
+    z-index: 0;
+    /* background: #4783ac; */
+    border-radius: 50%;
+    left: -40px;
+}
+
+.menuNav a:hover {
+    /*background-color: #f6be1d; 1ra*/
+    background-color: #ffa700; /*prueba*/
+}
+
+.col-blue-tr {
+    background-color: #000000;
+    color: white;
+}
+.alisup {
+    vertical-align: top;
+}
+
+.activo {
+    border-radius: 5px;
+    box-sizing: border-box;
+    color: white;
+    font-size: 0.7rem;
+    padding: 5px;
+}
+
+.tab_activo {
+    color: white !important;
+    background: rgba(6, 26, 71, 0.5);
+    border-left: 3px solid #ffa700 !important;
+    border-radius: 0 20px 20px 0;
+}
+.tab .tab_item {
+    border-left: 3px solid rgb(24, 59, 103);
+}
+.tab .sub-menu {
+    display: flex;
+}
+.sub-menu .iconArrow {
+    justify-content: flex-end;
+    align-content: flex-start;
+    flex: 1 1 20%;
+}
+.sub-nav {
+    background: #002d5f;
+}
+.sub-nav li a {
+    width: 100%;
+    padding-left: 57px !important;
+    color: rgb(143, 167, 199) !important;
+}
+
+.tab .tabs_items:hover .sub_item {
+    display: block;
+}
+.sub_item .right {
+    left: 30px;
+}
+.tabs_items .sub_item {
+    display: none;
+}
+.sidebar .margen {
+    margin-left: -15;
+}
